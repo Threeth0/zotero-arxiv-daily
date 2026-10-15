@@ -1,0 +1,644 @@
+离线示例 · 虚构论文研究日报｜2026-10-15｜15篇
+
+共15篇 · 外部发现12篇 · 库内精读3篇
+VLN 5 · Semantic Mapping 4 · 3D Reconstruction 3 · SLAM 3
+直接相关 9 · 间接可借鉴 5 · 关联较弱 0
+
+
+────────────────────────────────────
+01. [Demo 01] VLN: Task-Aware Spatial Understanding for Indoor Mobile Robots
+外部发现 · VLN · arxiv
+发表日期：2026-10-01
+Example Author A, Example Author B, Example Author C
+Example Research Institute
+库相似度：8.0 · 直接相关
+推荐理由
+演示：展示与VLN有关的方法、实验依据和可借鉴思路。此条不是实际论文推荐。
+
+英文简介
+This fictional example illustrates a bilingual research digest. It is not a real paper recommendation.
+
+中文简介
+此卡片使用人工编写的虚构示例，演示每日简报的排版。真实运行时由本次获得的论文文本生成中文解读。
+
+研究问题
+演示问题：机器人如何把语言目标与室内空间中的对象联系起来？
+
+核心方法
+演示方法：结合层级空间记忆与局部观测，在任务执行过程中检索与更新相关信息。
+
+作者主张的贡献
+演示贡献：组织不同粒度的空间信息。
+演示贡献：根据任务选择需要补充的观测。
+
+实验验证
+虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+
+作者明确的局限
+示例仅覆盖室内场景。
+
+分析推断与启发
+演示推断：可比较不同地图粒度对导航成功率和资源开销的影响。
+
+与VLN / 建图的关系
+演示：可用于理解空间表示、导航决策或机器人状态估计之间的关系。
+
+证据来源：正文节选依据
+实验原文依据：The simulated demo success rate is 82.5%.
+原文：https://example.org/paper/1
+PDF：https://example.org/paper/1.pdf
+Project：https://example.org/project/demo
+
+────────────────────────────────────
+02. [Demo 02] VLN: Task-Aware Spatial Understanding for Indoor Mobile Robots
+外部发现 · VLN · openalex
+发表日期：2026-10-01
+Example Author A, Example Author B, Example Author C
+Example Research Institute
+库相似度：7.9 · 直接相关
+推荐理由
+演示：展示与VLN有关的方法、实验依据和可借鉴思路。此条不是实际论文推荐。
+
+英文简介
+This fictional example illustrates a bilingual research digest. It is not a real paper recommendation.
+
+中文简介
+此卡片使用人工编写的虚构示例，演示每日简报的排版。真实运行时由本次获得的论文文本生成中文解读。
+
+研究问题
+演示问题：机器人如何把语言目标与室内空间中的对象联系起来？
+
+核心方法
+演示方法：结合层级空间记忆与局部观测，在任务执行过程中检索与更新相关信息。
+
+作者主张的贡献
+演示贡献：组织不同粒度的空间信息。
+演示贡献：根据任务选择需要补充的观测。
+
+实验验证
+虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+
+作者明确的局限
+示例仅覆盖室内场景。
+
+分析推断与启发
+演示推断：可比较不同地图粒度对导航成功率和资源开销的影响。
+
+与VLN / 建图的关系
+演示：可用于理解空间表示、导航决策或机器人状态估计之间的关系。
+
+证据来源：正文节选依据
+实验原文依据：The simulated demo success rate is 82.5%.
+原文：https://example.org/paper/2
+PDF：https://example.org/paper/2.pdf
+Project：https://example.org/project/demo
+
+────────────────────────────────────
+03. [Demo 03] VLN: Task-Aware Spatial Understanding for Indoor Mobile Robots
+外部发现 · VLN · arxiv
+发表日期：2019-06-01
+Example Author A, Example Author B, Example Author C
+Example Research Institute
+库相似度：7.8 · 直接相关
+推荐理由
+演示：展示与VLN有关的方法、实验依据和可借鉴思路。此条不是实际论文推荐。
+
+英文简介
+This fictional example illustrates a bilingual research digest. It is not a real paper recommendation.
+
+中文简介
+此卡片使用人工编写的虚构示例，演示每日简报的排版。真实运行时由本次获得的论文文本生成中文解读。
+
+研究问题
+演示问题：机器人如何把语言目标与室内空间中的对象联系起来？
+
+核心方法
+演示方法：结合层级空间记忆与局部观测，在任务执行过程中检索与更新相关信息。
+
+作者主张的贡献
+演示贡献：组织不同粒度的空间信息。
+演示贡献：根据任务选择需要补充的观测。
+
+实验验证
+虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+
+作者明确的局限
+示例仅覆盖室内场景。
+
+分析推断与启发
+演示推断：可比较不同地图粒度对导航成功率和资源开销的影响。
+
+与VLN / 建图的关系
+演示：可用于理解空间表示、导航决策或机器人状态估计之间的关系。
+
+证据来源：正文节选依据
+实验原文依据：The simulated demo success rate is 82.5%.
+原文：https://example.org/paper/3
+PDF：https://example.org/paper/3.pdf
+Project：https://example.org/project/demo
+
+────────────────────────────────────
+04. [Demo 04] VLN: Task-Aware Spatial Understanding for Indoor Mobile Robots
+外部发现 · VLN · openalex
+发表日期：2026-10-01
+Example Author A, Example Author B, Example Author C
+Example Research Institute
+库相似度：7.7 · 直接相关
+推荐理由
+演示：展示与VLN有关的方法、实验依据和可借鉴思路。此条不是实际论文推荐。
+
+英文简介
+This fictional example illustrates a bilingual research digest. It is not a real paper recommendation.
+
+中文简介
+此卡片使用人工编写的虚构示例，演示每日简报的排版。真实运行时由本次获得的论文文本生成中文解读。
+
+研究问题
+演示问题：机器人如何把语言目标与室内空间中的对象联系起来？
+
+核心方法
+演示方法：结合层级空间记忆与局部观测，在任务执行过程中检索与更新相关信息。
+
+作者主张的贡献
+演示贡献：组织不同粒度的空间信息。
+演示贡献：根据任务选择需要补充的观测。
+
+实验验证
+虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+
+作者明确的局限
+示例仅覆盖室内场景。
+
+分析推断与启发
+演示推断：可比较不同地图粒度对导航成功率和资源开销的影响。
+
+与VLN / 建图的关系
+演示：可用于理解空间表示、导航决策或机器人状态估计之间的关系。
+
+证据来源：正文节选依据
+实验原文依据：The simulated demo success rate is 82.5%.
+原文：https://example.org/paper/4
+PDF：https://example.org/paper/4.pdf
+Project：https://example.org/project/demo
+
+────────────────────────────────────
+05. [Demo 05] VLN: Task-Aware Spatial Understanding for Indoor Mobile Robots
+外部发现 · VLN · arxiv
+发表日期：2026-10-01
+Example Author A, Example Author B, Example Author C
+Example Research Institute
+库相似度：7.6 · 直接相关
+推荐理由
+演示：展示与VLN有关的方法、实验依据和可借鉴思路。此条不是实际论文推荐。
+
+英文简介
+This fictional example illustrates a bilingual research digest. It is not a real paper recommendation.
+
+中文简介
+此卡片使用人工编写的虚构示例，演示每日简报的排版。真实运行时由本次获得的论文文本生成中文解读。
+
+研究问题
+演示问题：机器人如何把语言目标与室内空间中的对象联系起来？
+
+核心方法
+演示方法：结合层级空间记忆与局部观测，在任务执行过程中检索与更新相关信息。
+
+作者主张的贡献
+演示贡献：组织不同粒度的空间信息。
+演示贡献：根据任务选择需要补充的观测。
+
+实验验证
+虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+
+作者明确的局限
+示例仅覆盖室内场景。
+
+分析推断与启发
+演示推断：可比较不同地图粒度对导航成功率和资源开销的影响。
+
+与VLN / 建图的关系
+演示：可用于理解空间表示、导航决策或机器人状态估计之间的关系。
+
+证据来源：正文节选依据
+实验原文依据：The simulated demo success rate is 82.5%.
+原文：https://example.org/paper/5
+PDF：https://example.org/paper/5.pdf
+Project：https://example.org/project/demo
+
+────────────────────────────────────
+06. [Demo 06] Semantic Mapping: Task-Aware Spatial Understanding for Indoor Mobile Robots
+外部发现 · Semantic Mapping · openalex
+发表日期：2019-06-01
+Example Author A, Example Author B, Example Author C
+Example Research Institute
+库相似度：7.5 · 直接相关
+推荐理由
+演示：展示与Semantic Mapping有关的方法、实验依据和可借鉴思路。此条不是实际论文推荐。
+
+英文简介
+This fictional example illustrates a bilingual research digest. It is not a real paper recommendation.
+
+中文简介
+此卡片使用人工编写的虚构示例，演示每日简报的排版。真实运行时由本次获得的论文文本生成中文解读。
+
+研究问题
+演示问题：机器人如何把语言目标与室内空间中的对象联系起来？
+
+核心方法
+演示方法：结合层级空间记忆与局部观测，在任务执行过程中检索与更新相关信息。
+
+作者主张的贡献
+演示贡献：组织不同粒度的空间信息。
+演示贡献：根据任务选择需要补充的观测。
+
+实验验证
+虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+
+作者明确的局限
+示例仅覆盖室内场景。
+
+分析推断与启发
+演示推断：可比较不同地图粒度对导航成功率和资源开销的影响。
+
+与VLN / 建图的关系
+演示：可用于理解空间表示、导航决策或机器人状态估计之间的关系。
+
+证据来源：正文节选依据
+实验原文依据：The simulated demo success rate is 82.5%.
+原文：https://example.org/paper/6
+PDF：https://example.org/paper/6.pdf
+Project：https://example.org/project/demo
+
+────────────────────────────────────
+07. [Demo 07] Semantic Mapping: Task-Aware Spatial Understanding for Indoor Mobile Robots
+外部发现 · Semantic Mapping · arxiv
+发表日期：2026-10-01
+Example Author A, Example Author B, Example Author C
+Example Research Institute
+库相似度：7.4 · 直接相关
+推荐理由
+演示：展示与Semantic Mapping有关的方法、实验依据和可借鉴思路。此条不是实际论文推荐。
+
+英文简介
+This fictional example illustrates a bilingual research digest. It is not a real paper recommendation.
+
+中文简介
+此卡片使用人工编写的虚构示例，演示每日简报的排版。真实运行时由本次获得的论文文本生成中文解读。
+
+研究问题
+演示问题：机器人如何把语言目标与室内空间中的对象联系起来？
+
+核心方法
+演示方法：结合层级空间记忆与局部观测，在任务执行过程中检索与更新相关信息。
+
+作者主张的贡献
+演示贡献：组织不同粒度的空间信息。
+演示贡献：根据任务选择需要补充的观测。
+
+实验验证
+虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+
+作者明确的局限
+示例仅覆盖室内场景。
+
+分析推断与启发
+演示推断：可比较不同地图粒度对导航成功率和资源开销的影响。
+
+与VLN / 建图的关系
+演示：可用于理解空间表示、导航决策或机器人状态估计之间的关系。
+
+证据来源：正文节选依据
+实验原文依据：The simulated demo success rate is 82.5%.
+原文：https://example.org/paper/7
+PDF：https://example.org/paper/7.pdf
+Project：https://example.org/project/demo
+
+────────────────────────────────────
+08. [Demo 08] Semantic Mapping: Task-Aware Spatial Understanding for Indoor Mobile Robots
+外部发现 · Semantic Mapping · openalex
+发表日期：2026-10-01
+Example Author A, Example Author B, Example Author C
+Example Research Institute
+库相似度：7.3 · 直接相关
+推荐理由
+演示：展示与Semantic Mapping有关的方法、实验依据和可借鉴思路。此条不是实际论文推荐。
+
+英文简介
+This fictional example illustrates a bilingual research digest. It is not a real paper recommendation.
+
+中文简介
+此卡片使用人工编写的虚构示例，演示每日简报的排版。真实运行时由本次获得的论文文本生成中文解读。
+
+研究问题
+演示问题：机器人如何把语言目标与室内空间中的对象联系起来？
+
+核心方法
+演示方法：结合层级空间记忆与局部观测，在任务执行过程中检索与更新相关信息。
+
+作者主张的贡献
+演示贡献：组织不同粒度的空间信息。
+演示贡献：根据任务选择需要补充的观测。
+
+实验验证
+虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+
+作者明确的局限
+示例仅覆盖室内场景。
+
+分析推断与启发
+演示推断：可比较不同地图粒度对导航成功率和资源开销的影响。
+
+与VLN / 建图的关系
+演示：可用于理解空间表示、导航决策或机器人状态估计之间的关系。
+
+证据来源：正文节选依据
+实验原文依据：The simulated demo success rate is 82.5%.
+原文：https://example.org/paper/8
+PDF：https://example.org/paper/8.pdf
+Project：https://example.org/project/demo
+
+────────────────────────────────────
+09. [Demo 09] Semantic Mapping: Task-Aware Spatial Understanding for Indoor Mobile Robots
+外部发现 · Semantic Mapping · arxiv
+发表日期：2019-06-01
+Example Author A, Example Author B, Example Author C
+Example Research Institute
+库相似度：7.2 · 直接相关
+推荐理由
+演示：展示与Semantic Mapping有关的方法、实验依据和可借鉴思路。此条不是实际论文推荐。
+
+英文简介
+This fictional example illustrates a bilingual research digest. It is not a real paper recommendation.
+
+中文简介
+此卡片使用人工编写的虚构示例，演示每日简报的排版。真实运行时由本次获得的论文文本生成中文解读。
+
+研究问题
+演示问题：机器人如何把语言目标与室内空间中的对象联系起来？
+
+核心方法
+演示方法：结合层级空间记忆与局部观测，在任务执行过程中检索与更新相关信息。
+
+作者主张的贡献
+演示贡献：组织不同粒度的空间信息。
+演示贡献：根据任务选择需要补充的观测。
+
+实验验证
+虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+
+作者明确的局限
+示例仅覆盖室内场景。
+
+分析推断与启发
+演示推断：可比较不同地图粒度对导航成功率和资源开销的影响。
+
+与VLN / 建图的关系
+演示：可用于理解空间表示、导航决策或机器人状态估计之间的关系。
+
+证据来源：正文节选依据
+实验原文依据：The simulated demo success rate is 82.5%.
+原文：https://example.org/paper/9
+PDF：https://example.org/paper/9.pdf
+Project：https://example.org/project/demo
+
+────────────────────────────────────
+10. [Demo 10] 3D Reconstruction: Task-Aware Spatial Understanding for Indoor Mobile Robots
+外部发现 · 3D Reconstruction · openalex
+发表日期：2026-10-01
+Example Author A, Example Author B, Example Author C
+Example Research Institute
+库相似度：7.1 · 间接可借鉴
+推荐理由
+演示：展示与3D Reconstruction有关的方法、实验依据和可借鉴思路。此条不是实际论文推荐。
+
+英文简介
+This fictional example illustrates a bilingual research digest. It is not a real paper recommendation.
+
+中文简介
+此卡片使用人工编写的虚构示例，演示每日简报的排版。真实运行时由本次获得的论文文本生成中文解读。
+
+研究问题
+演示问题：机器人如何把语言目标与室内空间中的对象联系起来？
+
+核心方法
+演示方法：结合层级空间记忆与局部观测，在任务执行过程中检索与更新相关信息。
+
+作者主张的贡献
+演示贡献：组织不同粒度的空间信息。
+演示贡献：根据任务选择需要补充的观测。
+
+实验验证
+虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+
+作者明确的局限
+示例仅覆盖室内场景。
+
+分析推断与启发
+演示推断：可比较不同地图粒度对导航成功率和资源开销的影响。
+
+与VLN / 建图的关系
+演示：可用于理解空间表示、导航决策或机器人状态估计之间的关系。
+
+证据来源：正文节选依据
+实验原文依据：The simulated demo success rate is 82.5%.
+原文：https://example.org/paper/10
+PDF：https://example.org/paper/10.pdf
+Project：https://example.org/project/demo
+
+────────────────────────────────────
+11. [Demo 11] 3D Reconstruction: Task-Aware Spatial Understanding for Indoor Mobile Robots
+外部发现 · 3D Reconstruction · arxiv
+发表日期：2026-10-01
+Example Author A, Example Author B, Example Author C
+Example Research Institute
+库相似度：7.0 · 间接可借鉴
+推荐理由
+演示：展示与3D Reconstruction有关的方法、实验依据和可借鉴思路。此条不是实际论文推荐。
+
+英文简介
+This fictional example illustrates a bilingual research digest. It is not a real paper recommendation.
+
+中文简介
+此卡片使用人工编写的虚构示例，演示每日简报的排版。真实运行时由本次获得的论文文本生成中文解读。
+
+研究问题
+演示问题：机器人如何把语言目标与室内空间中的对象联系起来？
+
+核心方法
+演示方法：结合层级空间记忆与局部观测，在任务执行过程中检索与更新相关信息。
+
+作者主张的贡献
+演示贡献：组织不同粒度的空间信息。
+演示贡献：根据任务选择需要补充的观测。
+
+实验验证
+虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+
+作者明确的局限
+示例仅覆盖室内场景。
+
+分析推断与启发
+演示推断：可比较不同地图粒度对导航成功率和资源开销的影响。
+
+与VLN / 建图的关系
+演示：可用于理解空间表示、导航决策或机器人状态估计之间的关系。
+
+证据来源：正文节选依据
+实验原文依据：The simulated demo success rate is 82.5%.
+原文：https://example.org/paper/11
+PDF：https://example.org/paper/11.pdf
+Project：https://example.org/project/demo
+
+────────────────────────────────────
+12. [Demo 12] 3D Reconstruction: Task-Aware Spatial Understanding for Indoor Mobile Robots
+外部发现 · 3D Reconstruction · openalex
+发表日期：2019-06-01
+Example Author A, Example Author B, Example Author C
+Example Research Institute
+库相似度：6.9 · 间接可借鉴
+推荐理由
+演示：展示与3D Reconstruction有关的方法、实验依据和可借鉴思路。此条不是实际论文推荐。
+
+英文简介
+This fictional example illustrates a bilingual research digest. It is not a real paper recommendation.
+
+中文简介
+此卡片使用人工编写的虚构示例，演示每日简报的排版。真实运行时由本次获得的论文文本生成中文解读。
+
+研究问题
+演示问题：机器人如何把语言目标与室内空间中的对象联系起来？
+
+核心方法
+演示方法：结合层级空间记忆与局部观测，在任务执行过程中检索与更新相关信息。
+
+作者主张的贡献
+演示贡献：组织不同粒度的空间信息。
+演示贡献：根据任务选择需要补充的观测。
+
+实验验证
+虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+
+作者明确的局限
+示例仅覆盖室内场景。
+
+分析推断与启发
+演示推断：可比较不同地图粒度对导航成功率和资源开销的影响。
+
+与VLN / 建图的关系
+演示：可用于理解空间表示、导航决策或机器人状态估计之间的关系。
+
+证据来源：正文节选依据
+实验原文依据：The simulated demo success rate is 82.5%.
+原文：https://example.org/paper/12
+PDF：https://example.org/paper/12.pdf
+Project：https://example.org/project/demo
+
+────────────────────────────────────
+13. [Demo 13] SLAM: Task-Aware Spatial Understanding for Indoor Mobile Robots
+库内精读 · SLAM · zotero
+发表日期：2026-10-01
+Example Author A, Example Author B, Example Author C
+未提供
+库相似度：6.8 · 间接可借鉴
+推荐理由
+演示：展示与SLAM有关的方法、实验依据和可借鉴思路。此条不是实际论文推荐。
+
+英文简介
+This fictional example illustrates a bilingual research digest. It is not a real paper recommendation.
+
+中文简介
+此卡片使用人工编写的虚构示例，演示每日简报的排版。真实运行时由本次获得的论文文本生成中文解读。
+
+研究问题
+演示问题：机器人如何把语言目标与室内空间中的对象联系起来？
+
+核心方法
+演示方法：结合层级空间记忆与局部观测，在任务执行过程中检索与更新相关信息。
+
+作者主张的贡献
+演示贡献：组织不同粒度的空间信息。
+演示贡献：根据任务选择需要补充的观测。
+
+实验验证
+虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+
+作者明确的局限
+示例仅覆盖室内场景。
+
+分析推断与启发
+演示推断：可比较不同地图粒度对导航成功率和资源开销的影响。
+
+与VLN / 建图的关系
+演示：可用于理解空间表示、导航决策或机器人状态估计之间的关系。
+
+证据来源：摘要依据
+实验原文依据：The simulated demo success rate is 82.5%.
+原文：https://example.org/paper/13
+Project：https://example.org/project/demo
+
+────────────────────────────────────
+14. [Demo 14] SLAM: Task-Aware Spatial Understanding for Indoor Mobile Robots
+库内精读 · SLAM · zotero
+发表日期：2026-10-01
+Example Author A, Example Author B, Example Author C
+Example Research Institute
+库相似度：6.7 · 未分析
+推荐理由
+演示：展示与SLAM有关的方法、实验依据和可借鉴思路。此条不是实际论文推荐。
+
+分析状态
+结构化解读生成失败；以下保留原始摘要。
+
+原始摘要
+Synthetic preview only. The simulated demo success rate is 82.5%. Project: https://example.org/project/demo
+
+证据来源：摘要依据
+原文：https://example.org/paper/14
+PDF：https://example.org/paper/14.pdf
+Project：https://example.org/project/demo
+
+────────────────────────────────────
+15. [Demo 15] SLAM: Task-Aware Spatial Understanding for Indoor Mobile Robots
+库内精读 · SLAM · zotero
+发表日期：2019-06-01
+Example Author A, Example Author B, Example Author C
+Example Research Institute
+库相似度：6.6 · 间接可借鉴
+推荐理由
+演示：展示与SLAM有关的方法、实验依据和可借鉴思路。此条不是实际论文推荐。
+
+英文简介
+This fictional example illustrates a bilingual research digest. It is not a real paper recommendation.
+
+中文简介
+此卡片使用人工编写的虚构示例，演示每日简报的排版。真实运行时由本次获得的论文文本生成中文解读。
+
+研究问题
+演示问题：机器人如何把语言目标与室内空间中的对象联系起来？
+
+核心方法
+演示方法：结合层级空间记忆与局部观测，在任务执行过程中检索与更新相关信息。
+
+作者主张的贡献
+演示贡献：组织不同粒度的空间信息。
+演示贡献：根据任务选择需要补充的观测。
+
+实验验证
+虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+
+作者明确的局限
+示例仅覆盖室内场景。
+
+分析推断与启发
+演示推断：可比较不同地图粒度对导航成功率和资源开销的影响。
+
+与VLN / 建图的关系
+演示：可用于理解空间表示、导航决策或机器人状态估计之间的关系。
+
+证据来源：完整提取文本依据（指本次提取文本，不保证覆盖原始论文全部内容）
+实验原文依据：The simulated demo success rate is 82.5%.
+原文：https://example.org/paper/15
+PDF：https://example.org/paper/15.pdf
+Project：https://example.org/project/demo
+
+库相似度不是论文质量评分。停止接收请停用GitHub Actions定时任务或调整收件人。

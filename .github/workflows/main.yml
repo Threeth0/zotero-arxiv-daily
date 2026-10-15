@@ -1,34 +1,86 @@
 name: Send emails daily
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: research-digest-${{ github.repository }}-${{ github.ref_name }}
+  cancel-in-progress: false
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 22 * * *'
+    # 22:17 UTC = 06:17 Asia/Shanghai the following day; avoid hourly peak.
+    - cron: '17 22 * * *'
 
 jobs:
   calculate-and-send:
     runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      ZOTERO_ID: ${{ secrets.ZOTERO_ID }}
+      ZOTERO_KEY: ${{ secrets.ZOTERO_KEY }}
+      SENDER: ${{ secrets.SENDER }}
+      RECEIVER: ${{ secrets.RECEIVER }}
+      SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      OPENAI_API_BASE: ${{ secrets.OPENAI_API_BASE }}
+      OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}
+      SMTP_SERVER: ${{ vars.SMTP_SERVER || 'smtp.qq.com' }}
+      SMTP_PORT: ${{ vars.SMTP_PORT || '465' }}
+      LLM_MODEL: ${{ vars.LLM_MODEL || 'gpt-4o-mini' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-        with:
-          repository: ${{ vars.REPOSITORY }}
-          ref: ${{ vars.REF }}
+
+      - name: Check required secrets
+        shell: bash
+        run: |
+          missing=0
+          for name in ZOTERO_ID ZOTERO_KEY SENDER RECEIVER SENDER_PASSWORD OPENAI_API_KEY OPENAI_API_BASE; do
+            if [ -z "${!name}" ]; then
+              echo "::error::Missing required Actions secret: $name"
+              missing=1
+            fi
+          done
+          exit "$missing"
 
       - name: Setup uv
         uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+
+      - name: Install locked dependencies
+        run: uv sync --frozen --no-dev
+
+      - name: Restore recommendation state
+        env:
+          GH_TOKEN: ${{ github.token }}
+          STATE_REPOSITORY: ${{ github.repository }}
+          STATE_BRANCH: ${{ github.ref_name }}
+        shell: bash
+        run: |
+          mkdir -p state
+          ARTIFACT_ID=$(gh api "repos/$STATE_REPOSITORY/actions/artifacts?name=recommendation-state&per_page=100" --jq ".artifacts | map(select(.expired == false and .workflow_run.head_branch == \"$STATE_BRANCH\")) | sort_by(.created_at) | last | .id")
+          if [ "$ARTIFACT_ID" != "null" ] && [ -n "$ARTIFACT_ID" ]; then
+            gh api "repos/$STATE_REPOSITORY/actions/artifacts/$ARTIFACT_ID/zip" > /tmp/recommendation-state.zip
+            unzip -p /tmp/recommendation-state.zip recommendations.json > state/recommendations.json
+          else
+            echo "::warning::No previous state snapshot found. This run starts a new recommendation history."
+          fi
 
       - name: Run script
-        env:
-          ZOTERO_ID: ${{ secrets.ZOTERO_ID }}
-          ZOTERO_KEY: ${{ secrets.ZOTERO_KEY }}
-          SENDER: ${{ secrets.SENDER }}
-          RECEIVER: ${{ secrets.RECEIVER }}
-          SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          OPENAI_API_BASE: ${{ secrets.OPENAI_API_BASE }}
-          CUSTOM_CONFIG: ${{ vars.CUSTOM_CONFIG }}
+        # No arbitrary config variable or repository/ref variable is consumed.
+        run: uv run --frozen --no-dev src/zotero_arxiv_daily/main.py --config-name github
+
+      - name: Persist recommendation state
+        if: always() && hashFiles('state/recommendations.json') != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: recommendation-state
+          path: state/recommendations.json
+          retention-days: 90
+          if-no-files-found: error
+
+      - name: Failure guidance
+        if: failure()
         run: |
-          printf "%b\n" "$CUSTOM_CONFIG" > config/custom.yaml
-          echo "Use custom config: "
-          cat config/custom.yaml
-          uv run src/zotero_arxiv_daily/main.py
+          echo "::error::Daily digest failed. Inspect the first failed step, check provider credentials/quota and SMTP, then rerun after fixing it. Enable GitHub Actions failure notifications in your account settings."

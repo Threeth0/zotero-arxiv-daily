@@ -133,7 +133,7 @@ def test_send_email_starttls_success(config, monkeypatch):
     assert "text/html" in body
 
 
-def test_send_email_falls_back_to_ssl(config, monkeypatch):
+def test_send_email_port_465_uses_ssl_directly(config, monkeypatch):
     sent = []
     call_count = {"smtp": 0}
 
@@ -150,11 +150,12 @@ def test_send_email_falls_back_to_ssl(config, monkeypatch):
 
     monkeypatch.setattr(smtplib, "SMTP", StubSMTP_TLS_Fails)
     monkeypatch.setattr(smtplib, "SMTP_SSL", StubSMTP_SSL)
+    config.email.smtp_port = 465
     send_email(config, "<html>ssl</html>")
-    assert len(sent) == 1
+    assert len(sent) == 1 and call_count["smtp"] == 0
 
 
-def test_send_email_falls_back_to_plain(config, monkeypatch):
+def test_send_email_does_not_fall_back_to_plaintext(config, monkeypatch):
     sent = []
     call_count = {"smtp": 0}
 
@@ -167,7 +168,7 @@ def test_send_email_falls_back_to_plain(config, monkeypatch):
                 pass  # first SMTP() call succeeds, but starttls will fail
             else:
                 pass  # third SMTP() call is the plain fallback
-        def starttls(self):
+        def starttls(self, **kwargs):
             raise OSError("TLS not supported")
         def login(self, u, p):
             pass
@@ -182,8 +183,9 @@ def test_send_email_falls_back_to_plain(config, monkeypatch):
 
     monkeypatch.setattr(smtplib, "SMTP", StubSMTP_TLS_Fails)
     monkeypatch.setattr(smtplib, "SMTP_SSL", StubSMTP_SSL_Fails)
-    send_email(config, "<html>plain</html>")
-    assert len(sent) == 1
+    with pytest.raises(OSError, match="TLS not supported"):
+        send_email(config, "<html>plain</html>")
+    assert sent == [] and call_count["smtp"] == 1
 
 
 # ---------------------------------------------------------------------------

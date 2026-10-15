@@ -17,3 +17,6 @@ models
 test-compose.yml
 outputs
 config/private.yaml
+# Runtime history contains library identifiers; keep it out of Git.
+state/
+previews/

@@ -6,6 +6,10 @@ import tiktoken
 from openai import OpenAI
 from loguru import logger
 import json
+from .analysis import (
+    ANALYSIS_SYSTEM_PROMPT, DEFAULT_RESEARCH_PROFILE, PaperAnalysis,
+    parse_analysis, select_paper_input,
+)
 RawPaperItem = TypeVar('RawPaperItem')
 
 @dataclass
@@ -20,6 +24,47 @@ class Paper:
     tldr: Optional[str] = None
     affiliations: Optional[list[str]] = None
     score: Optional[float] = None
+    analysis: Optional[PaperAnalysis] = None
+    origin: str = "external"
+    primary_topic: str = "Other"
+    published_date: Optional[str] = None
+    doi: Optional[str] = None
+    arxiv_id: Optional[str] = None
+    zotero_key: Optional[str] = None
+    venue: Optional[str] = None
+    content_url: Optional[str] = None
+    priority: str = "medium"
+    recommendation_reason: str = ""
+
+    def generate_analysis(self, openai_client: OpenAI, llm_params: dict,
+                          analysis_params: dict | None = None) -> PaperAnalysis:
+        """One structured call per paper; failures preserve the original abstract."""
+        params = analysis_params if analysis_params is not None else {}
+        evidence_source = "abstract"
+        try:
+            if not (self.abstract or self.full_text):
+                raise ValueError("No abstract or extracted body available")
+            source, evidence_source = select_paper_input(
+                self.title, self.abstract, self.full_text,
+                budget=params.get("input_token_budget", 12000),
+            )
+            profile = params.get("research_profile", DEFAULT_RESEARCH_PROFILE)
+            response = openai_client.chat.completions.create(
+                messages=[
+                    {"role": "system", "content": ANALYSIS_SYSTEM_PROMPT},
+                    {"role": "user", "content": f"Research profile:\n{profile}\n\nEvidence level: {evidence_source}\nPaper source:\n{source}"},
+                ],
+                **llm_params.get("generation_kwargs", {}),
+            )
+            self.analysis = parse_analysis(response.choices[0].message.content, source, evidence_source)
+            self.tldr = self.analysis.summary
+        except Exception as exc:
+            logger.warning(f"Structured analysis failed for {self.url}: {type(exc).__name__}")
+            self.tldr = self.abstract or "未提供摘要"
+            self.analysis = PaperAnalysis(
+                summary=self.tldr, evidence_source=evidence_source, status="failed",
+            )
+        return self.analysis
 
     def _generate_tldr_with_llm(self, openai_client:OpenAI,llm_params:dict) -> str:
         lang = llm_params.get('language', 'English')
@@ -89,8 +134,9 @@ class Paper:
 
             affiliations = re.search(r'\[.*?\]', affiliations, flags=re.DOTALL).group(0)
             affiliations = json.loads(affiliations)
-            affiliations = list(set(affiliations))
-            affiliations = [str(a) for a in affiliations]
+            if not isinstance(affiliations, list) or any(not isinstance(a, str) for a in affiliations):
+                raise ValueError("Affiliations must be a list of strings")
+            affiliations = list(dict.fromkeys(a.strip() for a in affiliations if a.strip()))
 
             return affiliations
     
@@ -109,3 +155,8 @@ class CorpusPaper:
     abstract: str
     added_date: datetime
     paths: list[str]
+    zotero_key: Optional[str] = None
+    published_date: Optional[str] = None
+    doi: Optional[str] = None
+    url: Optional[str] = None
+    authors: Optional[list[str]] = None

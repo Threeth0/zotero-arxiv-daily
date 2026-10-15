@@ -7,7 +7,7 @@ from .protocol import CorpusPaper
 import random
 from datetime import datetime
 from .reranker import get_reranker_cls
-from .construct_email import render_email
+from .construct_email import render_email, render_email_text, email_subject, report_date
 from .utils import send_email
 from openai import OpenAI
 from tqdm import tqdm
@@ -34,9 +34,8 @@ class Executor:
         self.config = config
         self.include_path_patterns = normalize_path_patterns(config.zotero.include_path, "include_path")
         self.ignore_path_patterns = normalize_path_patterns(config.zotero.ignore_path, "ignore_path")
-        self.retrievers = {
-            source: get_retriever_cls(source)(config) for source in config.executor.source
-        }
+        legacy_sources = [] if config.get("recommendation", {}).get("enabled", False) else config.executor.source
+        self.retrievers = {source: get_retriever_cls(source)(config) for source in legacy_sources}
         self.reranker = get_reranker_cls(config.executor.reranker)(config)
         self.openai_client = OpenAI(api_key=config.llm.api.key, base_url=config.llm.api.base_url)
     def fetch_zotero_corpus(self) -> list[CorpusPaper]:
@@ -45,7 +44,6 @@ class Executor:
         collections = zot.everything(zot.collections())
         collections = {c['key']:c for c in collections}
         corpus = zot.everything(zot.items(itemType='conferencePaper || journalArticle || preprint'))
-        corpus = [c for c in corpus if c['data']['abstractNote'] != '']
         def get_collection_path(col_key:str) -> str:
             if p := collections[col_key]['data']['parentCollection']:
                 return get_collection_path(p) + '/' + collections[col_key]['data']['name']
@@ -57,9 +55,14 @@ class Executor:
         logger.info(f"Fetched {len(corpus)} zotero papers")
         return [CorpusPaper(
             title=c['data']['title'],
-            abstract=c['data']['abstractNote'],
+            abstract=c['data'].get('abstractNote', ''),
             added_date=datetime.strptime(c['data']['dateAdded'], '%Y-%m-%dT%H:%M:%SZ'),
-            paths=c['paths']
+            paths=c['paths'],
+            zotero_key=c.get('key') or c['data'].get('key'),
+            published_date=c['data'].get('date'),
+            doi=c['data'].get('DOI'), url=c['data'].get('url'),
+            authors=[creator.get('name') or ' '.join(filter(None, [creator.get('firstName'), creator.get('lastName')]))
+                     for creator in c['data'].get('creators', []) if creator.get('creatorType') == 'author'],
         ) for c in corpus]
     
     def filter_corpus(self, corpus:list[CorpusPaper]) -> list[CorpusPaper]:
@@ -91,10 +94,13 @@ class Executor:
 
     
     def run(self):
+        if self.config.get("recommendation", {}).get("enabled", False):
+            from .daily import run_recommendations
+            return run_recommendations(self)
         corpus = self.fetch_zotero_corpus()
-        corpus = self.filter_corpus(corpus)
+        corpus = [c for c in self.filter_corpus(corpus) if c.abstract.strip()]
         if len(corpus) == 0:
-            logger.error(f"No zotero papers found. Please check your zotero settings:\n{self.config.zotero}")
+            logger.error("No Zotero papers found. Check credentials and collection filters.")
             return
         all_papers = []
         for source, retriever in self.retrievers.items():
@@ -111,14 +117,17 @@ class Executor:
             logger.info("Reranking papers...")
             reranked_papers = self.reranker.rerank(all_papers, corpus)
             reranked_papers = reranked_papers[:self.config.executor.max_paper_num]
-            logger.info("Generating TLDR and affiliations...")
+            logger.info("Generating structured paper analysis and affiliations...")
             for p in tqdm(reranked_papers):
-                p.generate_tldr(self.openai_client, self.config.llm)
+                p.generate_analysis(self.openai_client, self.config.llm, self.config.get("analysis", {}))
                 p.generate_affiliations(self.openai_client, self.config.llm)
         elif not self.config.executor.send_empty:
             logger.info("No new papers found. No email will be sent.")
             return
         logger.info("Sending email...")
-        email_content = render_email(reranked_papers)
-        send_email(self.config, email_content)
+        date = report_date(self.config)
+        email_content = render_email(reranked_papers, self.config, date)
+        plain_text = render_email_text(reranked_papers, self.config, date)
+        subject = email_subject(len(reranked_papers), self.config, date)
+        send_email(self.config, email_content, text=plain_text, subject=subject)
         logger.info("Email sent successfully")

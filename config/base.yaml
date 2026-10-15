@@ -5,6 +5,8 @@ zotero:
   ignore_path: null # A list of glob patterns marking the Zotero collections that should be excluded. Example: ["2026/ignore/**","archive/**"]
 
 source:
+  openalex:
+    api_key: ${oc.env:OPENALEX_API_KEY,null} # Optional key; required if the provider enforces it.
   arxiv:
     category: null # The categories of target arxiv papers. Find the abbr of your research area from [here](https://arxiv.org/category_taxonomy). Example: ["cs.AI","cs.CV","cs.LG","cs.CL"]
     include_cross_list: false # Whether to include arXiv cross-list papers in subscribed categories. Example: true
@@ -19,6 +21,10 @@ email:
   smtp_server: ??? # The SMTP server that sends the email. Ask your email provider (Gmail, QQ, Outlook, ...) for its SMTP server. Example: smtp.qq.com
   smtp_port: ??? # The port of SMTP server. Example: 465
   sender_password: ??? # The password of the sender account. Note that it's not necessarily the password for logging in the e-mail client, but the authentication code for SMTP service. Ask your email provider for this. Example: abcdefghijklmn
+  subject_prefix: 论文研究日报
+  sender_name: 论文研究日报
+  receiver_name: Reader
+  timezone: Asia/Shanghai
 
 llm:
   api:
@@ -28,7 +34,30 @@ llm:
   # Arguments for the LLM API. See [here](https://platform.openai.com/docs/api-reference/chat/create) for more details.
     max_tokens: 16384
     model: ???
-  language: English # Preferred language for the TL;DR. Example: English
+  language: Chinese # Legacy TLDR language; structured overview is English + Chinese.
+
+analysis:
+  research_profile: >-
+    关注视觉语言导航（VLN）、开放词汇与语义建图、三维重建、SLAM、主动感知、空间记忆，
+    以及室内移动机器人导航。分析直接贡献和跨领域可借鉴的方法。
+  input_token_budget: 12000 # Title + abstract + body budget; system prompt is separate.
+
+recommendation:
+  enabled: true # Frozen by policy.py at the main entry point.
+  external_sources: [arxiv, openalex]
+  external_count: 12 # Frozen by policy.py; Actions variables cannot override.
+  internal_count: 3 # Frozen by policy.py.
+  topic_targets:
+    VLN: 5
+    Semantic Mapping: 4
+    3D Reconstruction: 3
+    SLAM: 3
+  internal_review_days: 90 # Only after the unseen eligible library pool is exhausted.
+  candidates_per_topic_source: 30 # Bounded search page, without a year cutoff.
+  triage_per_topic: 12
+  internal_triage_limit: 20
+  candidate_cache_limit: 1200
+  state_path: state/recommendations.json
 
 reranker:
   local:
@@ -46,6 +75,6 @@ reranker:
 executor:
   debug: false # Whether to use debug mode. Example: true
   send_empty: false # Whether to send an empty email even if no new papers today. Example: true
-  max_paper_num: 100 # The maximum number of the papers presented in the email. Example: 100
+  max_paper_num: 15 # Frozen by policy.py; shortages are reported, never force-filled.
   source: ??? # The sources of papers to retrieve. Example: ['arxiv','biorxiv','medrxiv']
   reranker: local # The reranker to use. Example: 'local' or 'api'

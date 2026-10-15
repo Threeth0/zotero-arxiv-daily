@@ -1,0 +1,35 @@
+# Dedicated deployment profile: does NOT load custom.yaml or CUSTOM_CONFIG.
+defaults:
+  - base
+  - _self_
+
+zotero:
+  user_id: ${oc.env:ZOTERO_ID}
+  api_key: ${oc.env:ZOTERO_KEY}
+
+email:
+  sender: ${oc.env:SENDER}
+  receiver: ${oc.env:RECEIVER}
+  sender_password: ${oc.env:SENDER_PASSWORD}
+  smtp_server: ${oc.env:SMTP_SERVER,smtp.qq.com}
+  smtp_port: ${oc.decode:${oc.env:SMTP_PORT,465}}
+  timezone: Asia/Shanghai
+
+llm:
+  api:
+    key: ${oc.env:OPENAI_API_KEY}
+    base_url: ${oc.env:OPENAI_API_BASE}
+  generation_kwargs:
+    model: ${oc.env:LLM_MODEL,gpt-4o-mini}
+
+source:
+  arxiv:
+    category: [cs.RO, cs.CV, cs.AI]
+
+executor:
+  source: [arxiv]
+  debug: false
+  send_empty: true # Send a visible empty-state report on days with no eligible papers.
+
+recommendation:
+  state_path: state/recommendations.json

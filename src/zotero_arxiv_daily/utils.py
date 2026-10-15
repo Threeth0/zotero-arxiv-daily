@@ -3,12 +3,13 @@ import re
 import glob
 import math
 import smtplib
+import ssl
 from collections import Counter
 from email.header import Header
 from email.mime.text import MIMEText
-from email.utils import parseaddr, formataddr
+from email.mime.multipart import MIMEMultipart
+from email.utils import formataddr
 from loguru import logger
-import datetime
 from omegaconf import DictConfig
 import pymupdf
 import pymupdf.layout
@@ -139,33 +140,42 @@ def glob_match(path:str, pattern:str) -> bool:
     re_pattern = glob.translate(pattern,recursive=True)
     return re.match(re_pattern, path) is not None
 
-def send_email(config:DictConfig, html:str):
+def send_email(config:DictConfig, html:str, text:str | None = None, subject:str | None = None):
     sender = config.email.sender
     receiver = config.email.receiver
     password = config.email.sender_password
     smtp_server = config.email.smtp_server
     smtp_port = config.email.smtp_port
-    def _format_addr(s):
-        name, addr = parseaddr(s)
-        return formataddr((Header(name, 'utf-8').encode(), addr))
+    msg = MIMEMultipart('alternative')
+    if text is None:
+        import html as html_module
+        text = html_module.unescape(re.sub(r'<[^>]+>', ' ', html))
+    msg.attach(MIMEText(text, 'plain', 'utf-8'))
+    msg.attach(MIMEText(html, 'html', 'utf-8'))
+    msg['From'] = formataddr((str(Header(config.email.get('sender_name', '论文研究日报'), 'utf-8')), sender))
+    msg['To'] = formataddr((str(Header(config.email.get('receiver_name', 'Reader'), 'utf-8')), receiver))
+    if subject is None:
+        from .construct_email import email_subject
+        subject = email_subject(0, config)
+    msg['Subject'] = Header(subject, 'utf-8').encode()
 
-    msg = MIMEText(html, 'html', 'utf-8')
-    msg['From'] = _format_addr('Github Action <%s>' % sender)
-    msg['To'] = _format_addr('You <%s>' % receiver)
-    today = datetime.datetime.now().strftime('%Y/%m/%d')
-    msg['Subject'] = Header(f'Daily arXiv {today}', 'utf-8').encode()
-
+    # Port 465 speaks TLS immediately; trying plaintext there can hang until timeout.
+    # Never send SMTP credentials after TLS negotiation has failed.
+    server = None
     try:
-        server = smtplib.SMTP(smtp_server, smtp_port)
-        server.starttls()
-    except Exception as e:
-        logger.debug(f"Failed to use TLS. {e}\nTry to use SSL.")
+        context = ssl.create_default_context()
+        if int(smtp_port) == 465:
+            server = smtplib.SMTP_SSL(smtp_server, smtp_port, timeout=30, context=context)
+        else:
+            server = smtplib.SMTP(smtp_server, smtp_port, timeout=30)
+            server.starttls(context=context)
+        server.login(sender, password)
+        refused = server.sendmail(sender, [receiver], msg.as_string())
+        if refused:
+            raise smtplib.SMTPRecipientsRefused(refused)
+    finally:
         try:
-            server = smtplib.SMTP_SSL(smtp_server, smtp_port)
-        except Exception as e:
-            logger.debug(f"Failed to use SSL. {e}\nTry to use plain text.")
-            server = smtplib.SMTP(smtp_server, smtp_port)
-
-    server.login(sender, password)
-    server.sendmail(sender, [receiver], msg.as_string())
-    server.quit()
+            if server is not None:
+                server.quit()
+        except Exception:
+            pass # An accepted message must not be retried just because QUIT failed.

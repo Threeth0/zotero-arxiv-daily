@@ -6,6 +6,7 @@ import hydra
 from loguru import logger
 import dotenv
 from zotero_arxiv_daily.executor import Executor
+from zotero_arxiv_daily.policy import apply_daily_policy
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 dotenv.load_dotenv()
 
@@ -28,6 +29,8 @@ def main(config:DictConfig):
     if config.executor.debug:
         logger.info("Debug mode is enabled")
     
+    # Enforce after Hydra has merged files, CLI overrides and env interpolations.
+    apply_daily_policy(config)
     executor = Executor(config)
     executor.run()
 
