@@ -241,7 +241,16 @@ Describe contributions as authors' claims, not proven novelty. Keep all quantita
 claims in experiments ONLY (do not repeat them in summary, summary_en, method, contributions,
 limitations or relation_reason). For each experiment, quote a short verbatim evidence
 span from the exact supplied text including every reported number. If unsupported,
-omit the finding. Distinguish explicit author_limitations from inferred_insights.
+omit the finding. Prefer short prose sentences reporting the dataset, setting and
+result over formula-only fragments or flattened tables. Avoid formulas in evidence
+when an equally supportive prose sentence is available. Each evidence span should
+contain only one or two concise sentences needed to support that finding; do not
+append unrelated training hyperparameters, camera settings, or appendix references.
+Never rewrite, translate,
+repair, or strip math in the evidence itself: evidence must stay verbatim for source
+verification; display formatting is handled separately. If extracted text is corrupt,
+do not reconstruct its meaning from guesses. Distinguish explicit author_limitations
+from inferred_insights.
 Do not infer author limitations when absent; use an empty list. Do not output URLs.
 Do not claim to have read unseen text. Relation is direct, indirect or weak with a
 specific reason referring to the configured research profile. Keep each paragraph

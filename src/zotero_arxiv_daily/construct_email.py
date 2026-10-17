@@ -8,6 +8,7 @@ from zoneinfo import ZoneInfo
 
 from .analysis import EVIDENCE_LABELS, RELATION_LABELS, extract_resource_links, safe_url
 from .protocol import Paper
+from .reference_text import format_reference_text
 
 
 def _settings(config):
@@ -66,13 +67,15 @@ def paper_sections(p):
     a = p.analysis
     if not a or a.status != "ok":
         return [("分析状态", ["结构化解读生成失败；以下保留原始摘要。" if a else "尚未生成结构化解读。"]),
-                ("原始摘要" if a else "简要摘要", [(p.abstract if a else p.tldr or p.abstract) or "未提供"])]
-    experiments = [finding.text for finding in a.experiments]
+                ("原始摘要" if a else "简要摘要", [(p.abstract if a else p.tldr or p.abstract) or "未提供"]),
+                ("实验原文参考", experiment_references(p))]
+    experiments = [f"[{i}] {finding.text}" for i, finding in enumerate(a.experiments, 1)]
     if a.omitted_findings:
         experiments.append("部分实验陈述因证据或数字核验未通过，已省略。")
     return [("英文简介", [a.summary_en]), ("中文简介", [a.summary]),
             ("研究问题", [a.problem]), ("核心方法", [a.method]),
             ("作者主张的贡献", a.contributions), ("实验验证", experiments),
+            ("实验原文参考", experiment_references(p)),
             ("作者明确的局限", a.author_limitations), ("分析推断与启发", a.inferred_insights),
             ("与VLN / 建图的关系", [a.relation_reason])]
 
@@ -82,6 +85,23 @@ def _evidence(p):
         return "未分析"
     label = EVIDENCE_LABELS.get(p.analysis.evidence_source, "摘要依据")
     return label + ("（指本次提取文本，不保证覆盖原始论文全部内容）" if p.analysis.evidence_source == "full_text" else "")
+
+
+def experiment_references(p):
+    """One shared, numbered reference section for HTML and plain-text email."""
+    values = ["参考范围：" + _evidence(p)]
+    if not p.analysis or p.analysis.status != "ok" or not p.analysis.experiments:
+        return values + ["未获得通过核验的实验原文摘录。"]
+    for i, finding in enumerate(p.analysis.experiments, 1):
+        display = format_reference_text(finding.evidence)
+        notices = []
+        if display.simplified:
+            notices.append("简单公式/排版引用已转为可读文字")
+        if display.omitted:
+            notices.append("复杂公式或损坏字符未完整展示，以原文/PDF为准")
+        label = "原文摘录" if not notices else "原文参考（显示已调整：" + "；".join(notices) + "）"
+        values.append(f"[{i}] {label}：{display.text}")
+    return values
 
 
 def _overview(papers):
@@ -120,9 +140,7 @@ def _card(p, number):
     metadata = f"{origin} · {p.source} · {p.primary_topic} · 发表日期：{p.published_date or '未提供'}"
     topics = ", ".join(a.topics) if a and a.topics else p.primary_topic
     rows = _row("推荐理由", [p.recommendation_reason]) if p.recommendation_reason else ""
-    rows += "".join(_row(label, values) for label, values in paper_sections(p)) + _row("证据来源", [_evidence(p)])
-    if a and a.experiments:
-        rows += _row("实验原文依据", [finding.evidence for finding in a.experiments])
+    rows += "".join(_row(label, values) for label, values in paper_sections(p))
     buttons = " ".join(f'<a href="{escape(url, quote=True)}" style="display:inline-block;margin:4px 8px 4px 0;padding:8px 14px;background:#e8eefb;color:#1e40af;text-decoration:none;border-radius:4px;font-size:13px;">{label}</a>' for label, url in paper_links(p))
     return f'''<tr><td id="paper-{number}" style="padding:24px 22px;border-top:1px solid #dbe2ea;background:#ffffff;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="table-layout:fixed;">
@@ -153,7 +171,7 @@ def render_email(papers: list[Paper], config=None, date=None) -> str:
 <strong style="font-size:14px;color:#0f172a;">今日阅读目录</strong>{directory}{note}
 <p style="font-size:12px;line-height:1.7;color:#64748b;">库相似度用于衡量与Zotero参考论文的接近程度，不代表论文质量。主题配额灵活分配，不限制发表年份。</p></td></tr>
 {content}
-<tr><td style="padding:22px;font-size:12px;line-height:1.8;color:#64748b;background:#f8fafc;">结构化解读由模型基于本次可获得的文本生成，实验原文依据供核对；分析推断已单独标记。<br>停止接收：停用GitHub Actions定时任务，或调整收件人配置。</td></tr>
+<tr><td style="padding:22px;font-size:12px;line-height:1.8;color:#64748b;background:#f8fafc;">结构化解读由模型基于本次可获得的文本生成；实验原文参考与实验结果编号对应，公式显示调整会明确标记，以原文/PDF为准。分析推断已单独标记。<br>停止接收：停用GitHub Actions定时任务，或调整收件人配置。</td></tr>
 </table></td></tr></table></body></html>'''
 
 
@@ -169,9 +187,6 @@ def render_email_text(papers: list[Paper], config=None, date=None) -> str:
             lines.extend(["推荐理由", p.recommendation_reason])
         for label, values in paper_sections(p):
             lines.extend(["", label, *(values or ["未提供"])])
-        lines.extend(["", "证据来源：" + _evidence(p)])
-        if p.analysis:
-            lines.extend("实验原文依据：" + f.evidence for f in p.analysis.experiments)
         lines.extend(f"{label}：{url}" for label, url in paper_links(p))
     lines.extend(["", "库相似度不是论文质量评分。停止接收请停用GitHub Actions定时任务或调整收件人。"])
     return "\n".join(lines)

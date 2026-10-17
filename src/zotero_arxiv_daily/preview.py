@@ -37,6 +37,12 @@ def example_papers():
                 topics=[topic, "Embodied Navigation"], evidence_source="excerpts",
             ),
         )
+        if i == 1:
+            p.analysis.experiments[0].evidence = r"The simulated demo success rate is \(\mathrm{SR}=82.5\%\). For \textbf{training}, the example uses $2\times10^{-5}$; the field of view is $90^\circ$ and the resolution is $256 \times 256$. See Fig.~\ref{fig:demo}."
+        if i == 2:
+            p.analysis.experiments[0].evidence = r"The simulated demo success rate is 82.5%. Definition: $$\sum_{i=1}^{N} s_i$$."
+        if i == 3:
+            p.analysis.experiments[0].evidence = "The simulated demo success rate is 82.5%. Extracted symbol: \ufffd."
         if i == 13:
             p.affiliations, p.pdf_url = None, None
             p.analysis.evidence_source = "abstract"

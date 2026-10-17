@@ -26,7 +26,7 @@ A daily bilingual paper digest based on your Zotero library, with historical ext
 
 英文原始标题、作者/机构、来源、发表日期、库相似度、主题标签、推荐理由，然后按以下顺序展示：
 
-英文简介 → 中文简介 → 研究问题 → 核心方法 → 作者主张的贡献 → 实验验证 → 作者明确的局限 → 分析推断与启发 → 与 VLN/建图的关系 → 证据来源与阅读链接。
+英文简介 → 中文简介 → 研究问题 → 核心方法 → 作者主张的贡献 → 实验验证 → 实验原文参考 → 作者明确的局限 → 分析推断与启发 → 与 VLN/建图的关系 → 阅读链接。
 
 HTML 使用680px单栏表格与内联样式，同时提供纯文本版本。内容统一 HTML 转义，链接仅允许 HTTP/HTTPS，Code/Project 链接只从实际输入中提取。实验含原文支持片段；数字/证据核验失败时省略。生成失败保留原始摘要及失败状态，不伪造英中文解读。
 
@@ -76,6 +76,8 @@ DOI, versionless arXiv IDs and normalized exact titles identify duplicates. Chan
 The default analysis input budget is12000 tokens for title, abstract and body excerpts; prompts are additional. Methods, experiments, discussion and conclusion are prioritized; otherwise the input samples across the text. Labels distinguish abstract-only, body excerpts and complete *extracted* text. The last label does not certify complete PDF extraction.
 
 Experimental findings require a verbatim supporting span and matching numeric tokens. This mechanical check does not prove the interpretation correct. Author claims, explicit limitations and inferred insights are separated.
+
+“实验原文参考”合并参考范围与原文摘录，紧跟实验结果，用 [1]、[2] 等编号对应。原始证据先按原文核验，显示时仅转换有限的简单行内公式为纯文本，并注明调整；例如学习率显示为 `2 × 10^(-5)`，视场角为 `90°`，分辨率为 `256 × 256`。已识别的正文加粗等排版命令会去除外壳，文献与交叉引用保留原始标识并明确标注，不虚构图表编号。复杂公式以占位提示引导查看原文/PDF，提取中已损坏的字符不会被猜测还原。HTML 与纯文本邮件一致，不依赖脚本、外部公式服务或远程图片。未提供对应PDF时只能沿已有原文链接核对。
 
 - OpenAlex is an index, not a promise that every full text can be fetched. Only explicit open-access locations are used.
 - arXiv, OpenAlex, Zotero, model and SMTP availability/quotas remain external dependencies. API calls may cost money.

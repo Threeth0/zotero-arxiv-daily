@@ -1,4 +1,4 @@
-离线示例 · 虚构论文研究日报｜2026-10-15｜15篇
+离线示例 · 虚构论文研究日报｜2026-10-17｜15篇
 
 共15篇 · 外部发现12篇 · 库内精读3篇
 VLN 5 · Semantic Mapping 4 · 3D Reconstruction 3 · SLAM 3
@@ -32,7 +32,11 @@ This fictional example illustrates a bilingual research digest. It is not a real
 演示贡献：根据任务选择需要补充的观测。
 
 实验验证
-虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+[1] 虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+
+实验原文参考
+参考范围：正文节选依据
+[1] 原文参考（显示已调整：简单公式/排版引用已转为可读文字）：The simulated demo success rate is SR=82.5%. For training, the example uses 2 × 10^(-5); the field of view is 90° and the resolution is 256 × 256. See Fig. [原文交叉引用：fig:demo].
 
 作者明确的局限
 示例仅覆盖室内场景。
@@ -42,9 +46,6 @@ This fictional example illustrates a bilingual research digest. It is not a real
 
 与VLN / 建图的关系
 演示：可用于理解空间表示、导航决策或机器人状态估计之间的关系。
-
-证据来源：正文节选依据
-实验原文依据：The simulated demo success rate is 82.5%.
 原文：https://example.org/paper/1
 PDF：https://example.org/paper/1.pdf
 Project：https://example.org/project/demo
@@ -76,7 +77,11 @@ This fictional example illustrates a bilingual research digest. It is not a real
 演示贡献：根据任务选择需要补充的观测。
 
 实验验证
-虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+[1] 虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+
+实验原文参考
+参考范围：正文节选依据
+[1] 原文参考（显示已调整：复杂公式或损坏字符未完整展示，以原文/PDF为准）：The simulated demo success rate is 82.5%. Definition: [复杂公式省略，请核对原文/PDF].
 
 作者明确的局限
 示例仅覆盖室内场景。
@@ -86,9 +91,6 @@ This fictional example illustrates a bilingual research digest. It is not a real
 
 与VLN / 建图的关系
 演示：可用于理解空间表示、导航决策或机器人状态估计之间的关系。
-
-证据来源：正文节选依据
-实验原文依据：The simulated demo success rate is 82.5%.
 原文：https://example.org/paper/2
 PDF：https://example.org/paper/2.pdf
 Project：https://example.org/project/demo
@@ -120,7 +122,11 @@ This fictional example illustrates a bilingual research digest. It is not a real
 演示贡献：根据任务选择需要补充的观测。
 
 实验验证
-虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+[1] 虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+
+实验原文参考
+参考范围：正文节选依据
+[1] 原文参考（显示已调整：复杂公式或损坏字符未完整展示，以原文/PDF为准）：原文摘录含损坏或无法可靠显示的字符，未展示；请核对原文/PDF。
 
 作者明确的局限
 示例仅覆盖室内场景。
@@ -130,9 +136,6 @@ This fictional example illustrates a bilingual research digest. It is not a real
 
 与VLN / 建图的关系
 演示：可用于理解空间表示、导航决策或机器人状态估计之间的关系。
-
-证据来源：正文节选依据
-实验原文依据：The simulated demo success rate is 82.5%.
 原文：https://example.org/paper/3
 PDF：https://example.org/paper/3.pdf
 Project：https://example.org/project/demo
@@ -164,7 +167,11 @@ This fictional example illustrates a bilingual research digest. It is not a real
 演示贡献：根据任务选择需要补充的观测。
 
 实验验证
-虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+[1] 虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+
+实验原文参考
+参考范围：正文节选依据
+[1] 原文摘录：The simulated demo success rate is 82.5%.
 
 作者明确的局限
 示例仅覆盖室内场景。
@@ -174,9 +181,6 @@ This fictional example illustrates a bilingual research digest. It is not a real
 
 与VLN / 建图的关系
 演示：可用于理解空间表示、导航决策或机器人状态估计之间的关系。
-
-证据来源：正文节选依据
-实验原文依据：The simulated demo success rate is 82.5%.
 原文：https://example.org/paper/4
 PDF：https://example.org/paper/4.pdf
 Project：https://example.org/project/demo
@@ -208,7 +212,11 @@ This fictional example illustrates a bilingual research digest. It is not a real
 演示贡献：根据任务选择需要补充的观测。
 
 实验验证
-虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+[1] 虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+
+实验原文参考
+参考范围：正文节选依据
+[1] 原文摘录：The simulated demo success rate is 82.5%.
 
 作者明确的局限
 示例仅覆盖室内场景。
@@ -218,9 +226,6 @@ This fictional example illustrates a bilingual research digest. It is not a real
 
 与VLN / 建图的关系
 演示：可用于理解空间表示、导航决策或机器人状态估计之间的关系。
-
-证据来源：正文节选依据
-实验原文依据：The simulated demo success rate is 82.5%.
 原文：https://example.org/paper/5
 PDF：https://example.org/paper/5.pdf
 Project：https://example.org/project/demo
@@ -252,7 +257,11 @@ This fictional example illustrates a bilingual research digest. It is not a real
 演示贡献：根据任务选择需要补充的观测。
 
 实验验证
-虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+[1] 虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+
+实验原文参考
+参考范围：正文节选依据
+[1] 原文摘录：The simulated demo success rate is 82.5%.
 
 作者明确的局限
 示例仅覆盖室内场景。
@@ -262,9 +271,6 @@ This fictional example illustrates a bilingual research digest. It is not a real
 
 与VLN / 建图的关系
 演示：可用于理解空间表示、导航决策或机器人状态估计之间的关系。
-
-证据来源：正文节选依据
-实验原文依据：The simulated demo success rate is 82.5%.
 原文：https://example.org/paper/6
 PDF：https://example.org/paper/6.pdf
 Project：https://example.org/project/demo
@@ -296,7 +302,11 @@ This fictional example illustrates a bilingual research digest. It is not a real
 演示贡献：根据任务选择需要补充的观测。
 
 实验验证
-虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+[1] 虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+
+实验原文参考
+参考范围：正文节选依据
+[1] 原文摘录：The simulated demo success rate is 82.5%.
 
 作者明确的局限
 示例仅覆盖室内场景。
@@ -306,9 +316,6 @@ This fictional example illustrates a bilingual research digest. It is not a real
 
 与VLN / 建图的关系
 演示：可用于理解空间表示、导航决策或机器人状态估计之间的关系。
-
-证据来源：正文节选依据
-实验原文依据：The simulated demo success rate is 82.5%.
 原文：https://example.org/paper/7
 PDF：https://example.org/paper/7.pdf
 Project：https://example.org/project/demo
@@ -340,7 +347,11 @@ This fictional example illustrates a bilingual research digest. It is not a real
 演示贡献：根据任务选择需要补充的观测。
 
 实验验证
-虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+[1] 虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+
+实验原文参考
+参考范围：正文节选依据
+[1] 原文摘录：The simulated demo success rate is 82.5%.
 
 作者明确的局限
 示例仅覆盖室内场景。
@@ -350,9 +361,6 @@ This fictional example illustrates a bilingual research digest. It is not a real
 
 与VLN / 建图的关系
 演示：可用于理解空间表示、导航决策或机器人状态估计之间的关系。
-
-证据来源：正文节选依据
-实验原文依据：The simulated demo success rate is 82.5%.
 原文：https://example.org/paper/8
 PDF：https://example.org/paper/8.pdf
 Project：https://example.org/project/demo
@@ -384,7 +392,11 @@ This fictional example illustrates a bilingual research digest. It is not a real
 演示贡献：根据任务选择需要补充的观测。
 
 实验验证
-虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+[1] 虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+
+实验原文参考
+参考范围：正文节选依据
+[1] 原文摘录：The simulated demo success rate is 82.5%.
 
 作者明确的局限
 示例仅覆盖室内场景。
@@ -394,9 +406,6 @@ This fictional example illustrates a bilingual research digest. It is not a real
 
 与VLN / 建图的关系
 演示：可用于理解空间表示、导航决策或机器人状态估计之间的关系。
-
-证据来源：正文节选依据
-实验原文依据：The simulated demo success rate is 82.5%.
 原文：https://example.org/paper/9
 PDF：https://example.org/paper/9.pdf
 Project：https://example.org/project/demo
@@ -428,7 +437,11 @@ This fictional example illustrates a bilingual research digest. It is not a real
 演示贡献：根据任务选择需要补充的观测。
 
 实验验证
-虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+[1] 虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+
+实验原文参考
+参考范围：正文节选依据
+[1] 原文摘录：The simulated demo success rate is 82.5%.
 
 作者明确的局限
 示例仅覆盖室内场景。
@@ -438,9 +451,6 @@ This fictional example illustrates a bilingual research digest. It is not a real
 
 与VLN / 建图的关系
 演示：可用于理解空间表示、导航决策或机器人状态估计之间的关系。
-
-证据来源：正文节选依据
-实验原文依据：The simulated demo success rate is 82.5%.
 原文：https://example.org/paper/10
 PDF：https://example.org/paper/10.pdf
 Project：https://example.org/project/demo
@@ -472,7 +482,11 @@ This fictional example illustrates a bilingual research digest. It is not a real
 演示贡献：根据任务选择需要补充的观测。
 
 实验验证
-虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+[1] 虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+
+实验原文参考
+参考范围：正文节选依据
+[1] 原文摘录：The simulated demo success rate is 82.5%.
 
 作者明确的局限
 示例仅覆盖室内场景。
@@ -482,9 +496,6 @@ This fictional example illustrates a bilingual research digest. It is not a real
 
 与VLN / 建图的关系
 演示：可用于理解空间表示、导航决策或机器人状态估计之间的关系。
-
-证据来源：正文节选依据
-实验原文依据：The simulated demo success rate is 82.5%.
 原文：https://example.org/paper/11
 PDF：https://example.org/paper/11.pdf
 Project：https://example.org/project/demo
@@ -516,7 +527,11 @@ This fictional example illustrates a bilingual research digest. It is not a real
 演示贡献：根据任务选择需要补充的观测。
 
 实验验证
-虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+[1] 虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+
+实验原文参考
+参考范围：正文节选依据
+[1] 原文摘录：The simulated demo success rate is 82.5%.
 
 作者明确的局限
 示例仅覆盖室内场景。
@@ -526,9 +541,6 @@ This fictional example illustrates a bilingual research digest. It is not a real
 
 与VLN / 建图的关系
 演示：可用于理解空间表示、导航决策或机器人状态估计之间的关系。
-
-证据来源：正文节选依据
-实验原文依据：The simulated demo success rate is 82.5%.
 原文：https://example.org/paper/12
 PDF：https://example.org/paper/12.pdf
 Project：https://example.org/project/demo
@@ -560,7 +572,11 @@ This fictional example illustrates a bilingual research digest. It is not a real
 演示贡献：根据任务选择需要补充的观测。
 
 实验验证
-虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+[1] 虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+
+实验原文参考
+参考范围：摘要依据
+[1] 原文摘录：The simulated demo success rate is 82.5%.
 
 作者明确的局限
 示例仅覆盖室内场景。
@@ -570,9 +586,6 @@ This fictional example illustrates a bilingual research digest. It is not a real
 
 与VLN / 建图的关系
 演示：可用于理解空间表示、导航决策或机器人状态估计之间的关系。
-
-证据来源：摘要依据
-实验原文依据：The simulated demo success rate is 82.5%.
 原文：https://example.org/paper/13
 Project：https://example.org/project/demo
 
@@ -592,7 +605,9 @@ Example Research Institute
 原始摘要
 Synthetic preview only. The simulated demo success rate is 82.5%. Project: https://example.org/project/demo
 
-证据来源：摘要依据
+实验原文参考
+参考范围：摘要依据
+未获得通过核验的实验原文摘录。
 原文：https://example.org/paper/14
 PDF：https://example.org/paper/14.pdf
 Project：https://example.org/project/demo
@@ -624,7 +639,11 @@ This fictional example illustrates a bilingual research digest. It is not a real
 演示贡献：根据任务选择需要补充的观测。
 
 实验验证
-虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+[1] 虚构示例的模拟成功率为82.5%，仅用于演示数字与原文依据。
+
+实验原文参考
+参考范围：完整提取文本依据（指本次提取文本，不保证覆盖原始论文全部内容）
+[1] 原文摘录：The simulated demo success rate is 82.5%.
 
 作者明确的局限
 示例仅覆盖室内场景。
@@ -634,9 +653,6 @@ This fictional example illustrates a bilingual research digest. It is not a real
 
 与VLN / 建图的关系
 演示：可用于理解空间表示、导航决策或机器人状态估计之间的关系。
-
-证据来源：完整提取文本依据（指本次提取文本，不保证覆盖原始论文全部内容）
-实验原文依据：The simulated demo success rate is 82.5%.
 原文：https://example.org/paper/15
 PDF：https://example.org/paper/15.pdf
 Project：https://example.org/project/demo
